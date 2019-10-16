@@ -1,0 +1,130 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <i class="fas fa-edit d-block mx-auto mb-4"></i>
+    <h2>Profile Generator</h2>
+    <p class="lead">Generate a detailed profile for a realistic and rounded character. Output loads of detail including
+      a biography, information about the important people in your character's life, and a timeline. Ideal for your
+      protagonist or characters in a long novel or epic film series.</p>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 ">
+      <h4 class="mb-3">General information</h4>
+      <form class="needs-validation" novalidate [formGroup]="myForm" (ngSubmit)="submitHandler()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" formControlName='firstName'
+              [ngClass]="{'is-invalid':firstName.invalid && firstName.touched}">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" formControlName='lastName'
+              [ngClass]="{'is-invalid':lastName.invalid && lastName.touched}">
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <input type="email" class="form-control" id="email" formControlName='email'
+              [ngClass]="{'is-invalid':email.invalid && email.touched}">
+            <div class="invalid-feedback" style="width: 100%;">
+              Please enter a valid email address.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" formControlName='address'
+            [ngClass]="{'is-invalid':address.invalid && address.touched}">
+          <div class="invalid-feedback">
+            Please enter your address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone">Phone </label>
+          <input type="text" class="form-control" id="phone" formControlName='phone'>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Country</label>
+            <select class="custom-select d-block w-100" id="country" formControlName='country'>
+              <option value="">Choose...</option>
+              <option>United States</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">State</label>
+            <select class="custom-select d-block w-100" id="state" formControlName='state'>
+              <option value="">Choose...</option>
+              <option>California</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input type="text" class="form-control" id="zip" formControlName='zip'>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="about">About me </label>
+          <textarea class="form-control" id="about" formControlName='about'></textarea>
+        </div>
+
+        <hr class="mb-4">
+        <hr class="mb-4">
+        <h4 class="mb-3">Experience</h4>
+
+        <div formArrayName="experiences">
+
+          <div *ngFor="let exp of experienceForms.controls; let i=index" [formGroupName]="i">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="position">Position</label>
+                <input type="text" class="form-control" id="position" formControlName='position'>
+
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="company">Company Name</label>
+                <input type="text" class="form-control" id="company" formControlName='company'>
+
+              </div>
+            </div>
+
+
+            <button class="btn btn-danger btn-lg btn-block" (click)="deleteExp(i)">Delete Experience</button>
+            <hr class="mb-4">
+
+          </div>
+
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" (click)="addExp()">Add Experience</button>
+
+        <hr class="mb-4">
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block submit" type="submit" [disabled]="myForm.invalid">Generate
+          Profile</button>
+      </form>
+      <div class="alert alert-success" role="alert" *ngIf="success">
+        Form submited with success
+      </div>
+    </div>
+  </div>
+
+  
+
+
+</div>

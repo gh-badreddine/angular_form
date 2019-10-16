@@ -1,0 +1,80 @@
+<div class="container ">
+  <div class=" profile row">
+    <div class="col-lg-8">
+      <div class="card bg-dark text-white">
+        <img src="../../assets/images/city.webp" class="card-img" alt="...">
+        <div class="card-img-overlay">
+          <h5 class="card-title">{{profile.lastName}} {{profile.firstName}}</h5>
+          <p class="card-text">{{profile.email}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">About me</h5>
+          <p class="card-text">
+            {{profile.about}}
+          </p>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Contact Information</h5>
+          <p class="text-nowrap"><i class="fas fa-at"></i>
+            <small>
+              <span class="text-break">{{profile.email}}
+              </span>
+            </small>
+          </p>
+          <p class="text-nowrap">
+            <i class="fas fa-phone-alt"></i>
+            <small>
+              <span class="text-break">{{profile.phone}}
+              </span>
+            </small>
+          </p>
+          <p class="text-nowrap"><i class="fas fa-map-marker-alt"></i>
+            <small>
+              <span class="text-break">{{profile.address}}
+              </span>
+            </small>
+          </p>
+          <p class="text-nowrap"><small>
+              <span class="text-break">{{profile.zip}} {{profile.state}} {{profile.country}}
+              </span>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="profile row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Experience</h5> 
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Position</th>
+                  </tr>
+                </thead>
+                <tbody  *ngFor="let exp of profile.experiences; let i = index">
+                  <tr>
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{exp.company}}</td>
+                    <td>{{exp.position}}</td>
+                   
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
